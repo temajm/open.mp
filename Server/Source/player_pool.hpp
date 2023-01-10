@@ -212,7 +212,7 @@ struct PlayerPool final : public IPlayerPool, public NetworkEventHandler, public
 					{
 						return false;
 					}
-					if (!from->areWeaponsAllowed() && 0 < onPlayerGiveTakeDamageRPC.WeaponID && onPlayerGiveTakeDamageRPC.WeaponID <= 47)
+					if (!from->areWeaponsAllowed() && 0 < onPlayerGiveTakeDamageRPC.WeaponID && onPlayerGiveTakeDamageRPC.WeaponID <= PlayerWeapon_End)
 					{
 						// They were shooting and shouldn't be.
 						return false;
@@ -246,7 +246,7 @@ struct PlayerPool final : public IPlayerPool, public NetworkEventHandler, public
 				{
 					return false;
 				}
-				if (!peer.areWeaponsAllowed() && 0 < onPlayerGiveTakeDamageRPC.WeaponID && onPlayerGiveTakeDamageRPC.WeaponID <= 47)
+				if (!peer.areWeaponsAllowed() && 0 < onPlayerGiveTakeDamageRPC.WeaponID && onPlayerGiveTakeDamageRPC.WeaponID <= PlayerWeapon_End)
 				{
 					// They were shooting and shouldn't be.
 					return false;
@@ -2087,7 +2087,7 @@ struct PlayerPool final : public IPlayerPool, public NetworkEventHandler, public
 				}
 
 				uint16_t keys = player->passengerSync_.Keys;
-				if (player->passengerSync_.WeaponID == 43 /* camera */)
+				if (player->passengerSync_.WeaponID == PlayerWeapon_Camera)
 				{
 					player->passengerSync_.Keys &= 0xFB;
 				}
